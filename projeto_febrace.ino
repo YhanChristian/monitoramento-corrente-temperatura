@@ -36,12 +36,12 @@
  void temperature();
  void carga();
  void current();
- void voltage();
+ double voltage();
 
  char menu = 0x01;
  char set_1 = 0x00, set_2 = 0x00, set_3 = 0x00;
  boolean flag_up, flag_down, flag_default, flag_ligar, flag_ddp;
-char tensao;//Definindo tensão da rede
+ double tensao;//Definindo tensão da rede
 
 //Array simbolo grau
 byte grau[8] = { 0x0C,0x12,0x12,0x0C,0x00, 0x00, 0x00, 0x00};
@@ -50,9 +50,10 @@ byte zero = (0x00);
 void setup() 
 {
   Wire.begin();
-  //Pino, calibracao - Cur Const= Ratio/BurdenR. 1800/62 = 29. 
+  //Pino, calibracao - Verificar calibração correta!
   emon1.current(Current_Sensor, 29);
   display_lcd.begin(16, 2); 
+  display_lcd.set
     // Entrada para botões habilitando resistor pull up
     for (char x = 8; x < 13; x++)
     {
@@ -67,7 +68,7 @@ void setup()
     flag_ligar = 0x00;
     flag_ddp = 0x00;
       // A linha abaixo pode ser retirada apos setar a data e hora - configura data e hora
-      // SelecionaDataeHora(); 
+     // SelecionaDataeHora(); 
 }
     void loop()
     {
@@ -157,10 +158,10 @@ void febrace()
 
 void SelecionaDataeHora()
 {
-  byte seconds = 03;
-  byte minutes = 50;
-  byte hours = 2;
-  byte day = 18;
+  byte seconds = 00;
+  byte minutes = 29;
+  byte hours = 11;
+  byte day = 25;
   byte month = 10;
   byte years = 15;
   Wire.beginTransmission(DS1307_ADDRESS);
@@ -296,7 +297,7 @@ void carga()
   }
 }
 
-void voltage()
+double voltage()
 // Função para definir tensão de entrada
 {
   display_lcd.setCursor(0,0);
@@ -322,13 +323,15 @@ void voltage()
     tensao = 110;
     display_lcd.setCursor(0,1);
     display_lcd.print("Tensao 110V");
+    return tensao;
     break;
     case 0x02:
-    tensao = 220;
+    tensao =220;
     display_lcd.setCursor(0,1);
     display_lcd.print("Tensao 220V");
     break;
     display_lcd.clear();
+    return tensao;
   }
 }
 
@@ -337,7 +340,7 @@ void current()
 {
   // Função para leitura da corrente elétrica e calculo de potência
   double Irms = emon1.calcIrms(1480);
-  
+    
   display_lcd.setCursor(0,0);
   display_lcd.print("Corr. (A): " );
   display_lcd.print(Irms);
