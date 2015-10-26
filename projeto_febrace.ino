@@ -1,16 +1,15 @@
 /* 
- *  Projeto Febrace - versão 2.2
+ *  Projeto Febrace - versão 2.3
  *  
  *  Medição de Parâmetros de Equipamentos Eletroeletrônicos
  *  
- *  Autores: Vitória Carolina | Yhan Christian, Data: 18/10/2015
+ *  Autora: Vitória Carolina Ferreira Pereira - Data: 25/10/2015
  *    
  */
  #include <LiquidCrystal.h>
  #include "Wire.h"
  #include <DHT.h>
  #include <EmonLib.h>
-
  EnergyMonitor emon1;
  LiquidCrystal display_lcd(7, 6, 5, 4, 3, 2);
 
@@ -27,7 +26,6 @@
  #define Buzzer A2 
 
  DHT dht(Pino_Sensor, Modelo_Sensor);
-
  void changeMenu();
  void febrace();
  void dispMenu();
@@ -53,7 +51,6 @@ void setup()
   //Pino, calibracao - Verificar calibração correta!
   emon1.current(Current_Sensor, 29);
   display_lcd.begin(16, 2); 
-  display_lcd.set
     // Entrada para botões habilitando resistor pull up
     for (char x = 8; x < 13; x++)
     {
