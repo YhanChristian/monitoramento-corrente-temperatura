@@ -6,12 +6,14 @@
  *  Autora: Vitória Carolina Ferreira Pereira - Data: 25/10/2015
  *    
  */
+ #include <SoftwareSerial.h>
  #include <LiquidCrystal.h>
  #include "Wire.h"
  #include <DHT.h>
  #include <EmonLib.h>
  EnergyMonitor emon1;
  LiquidCrystal display_lcd(7, 6, 5, 4, 3, 2);
+ SoftwareSerial bluetooth(0, 1);
 
  #define DS1307_ADDRESS 0x68
  #define Button_Up 12
@@ -51,6 +53,9 @@ void setup()
   //Pino, calibracao - Verificar calibração correta!
   emon1.current(Current_Sensor, 29);
   display_lcd.begin(16, 2); 
+  //Serial.begin(9600);
+//  bluetooth.begin(9600);
+
     // Entrada para botões habilitando resistor pull up
     for (char x = 8; x < 13; x++)
     {
@@ -336,8 +341,7 @@ double voltage()
 void current()
 {
   // Função para leitura da corrente elétrica e calculo de potência
-  double Irms = emon1.calcIrms(1480);
-    
+  double Irms = emon1.calcIrms(1480); 
   display_lcd.setCursor(0,0);
   display_lcd.print("Corr. (A): " );
   display_lcd.print(Irms);
