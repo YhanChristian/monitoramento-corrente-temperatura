@@ -325,7 +325,6 @@ double voltage()
     tensao = 110;
     display_lcd.setCursor(0,1);
     display_lcd.print("Tensao 110V");
-    return tensao;
     break;
     case 0x02:
     tensao =220;
