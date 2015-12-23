@@ -1,9 +1,9 @@
 /* 
- *  Projeto Febrace - versão 2.3
+ *  Exemplo de Utilização de Sensor de Corrente, Temperatura e Menu LCD
  *  
  *  Medição de Parâmetros de Equipamentos Eletroeletrônicos
  *  
- *  Autora: Vitória Carolina Ferreira Pereira - Data: 25/10/2015
+ *  Autora: Yhan Christian Souza Silva - Data: 23/12/2015
  *    
  */
  #include <SoftwareSerial.h>
