@@ -3,7 +3,7 @@
  *  
  *  Medição de Parâmetros de Equipamentos Eletroeletrônicos
  *  
- *  Autora: Yhan Christian Souza Silva - Data: 23/12/2015
+ *  Autor: Yhan Christian Souza Silva - Data: 23/12/2015
  *    
  */
  #include <SoftwareSerial.h>
