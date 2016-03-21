@@ -363,25 +363,23 @@ void menuDefault()
     {
      for (char y = 3; y > 0; y--)
      {
-      if (y > 0)
-      {
-        digitalWrite(Buzzer, 0);
-        display_lcd.clear();
-        delay(25);
-        flag_default = 0x00;
-        set_2 = 0x01;
-        date_hour();
-        delay(1000);
-        display_lcd.clear();
-        delay(25);
-        temperature();
-        delay(1000);  
-        display_lcd.clear();
-        delay(25); 
-        current();
-        delay(1000);
-      }
-      display_lcd.clear();
-    }
-  }
-}
+       digitalWrite(Buzzer, 0);
+       display_lcd.clear();
+       delay(25);
+       flag_default = 0x00;
+       set_2 = 0x01;
+       date_hour();
+       delay(1000);
+       display_lcd.clear();
+       delay(25);
+       temperature();
+       delay(1000);  
+       display_lcd.clear();
+       delay(25); 
+       current();
+       delay(1000);
+     }
+    display_lcd.clear();
+   }
+ }
+
